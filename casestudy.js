@@ -152,7 +152,7 @@ function LoadHome() {
   document.getElementById('ring').classList.remove('ringRemove')
 setTimeout(() => {
   document.getElementById('ring').classList.add('ringRemove')
-  window.location.href = "/";
+  window.location.replace('/');
   }, 1000);
 
 }
