@@ -152,7 +152,7 @@ function LoadHome() {
   document.getElementById('ring').classList.remove('ringRemove')
 setTimeout(() => {
   document.getElementById('ring').classList.add('ringRemove')
-  window.location.replace('/');
+  window.location.href = "https://thanggggggg.github.io/CaseStudy/";
   }, 1000);
 
 }
