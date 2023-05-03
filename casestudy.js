@@ -14,9 +14,7 @@ class Product {
 function ChuaHoanThien() {
   alert("Tính năng này đang trong quá trình hoàn thiện")
 }
-function DaHoanThien() {
-  alert("Bạn đã thanh toán thành công")
-}
+
 //  trả về phần tử có thuộc tính id 'Products' gán cho biến tb
 let tb = document.getElementById('Products')
 
@@ -122,16 +120,18 @@ function AddProduct(i) {
 
 //Hàm xáo sản phẩm trong giỏ hàng
 function DeleteProduct(i) {
-  cart.splice(i, 1)
-  document.getElementById('cart').innerHTML = ""
-  show()
+  if (confirm('bạn có muốn xoá sản phẩm ra khỏi giỏ hàng không?') == true) {
+    cart.splice(i, 1)
+    document.getElementById('cart').innerHTML = ""
+    show()
+  }
 }
 
 
 function tru(i) {
   cart[i].quantiy -= 1;
-  if (cart[i].quantiy < 0) {
-      if (confirm('bạn có muốn xoá sản phẩm ra khỏi giỏ hàng không') == true) {
+  if (cart[i].quantiy < 1) {
+      if (confirm('bạn có muốn xoá sản phẩm ra khỏi giỏ hàng không?') == true) {
           DeleteProduct(i);
       } else {
           cart[i].quantiy = 0
@@ -146,4 +146,21 @@ function cong(i) {
   cart[i].quantiy += 1;
   document.getElementById('cart').innerHTML = ""
   show()
+}
+
+function LoadHome() {
+  document.getElementById('ring').classList.remove('ringRemove')
+setTimeout(() => {
+  document.getElementById('ring').classList.add('ringRemove')
+  window.location.href = "/index.html";
+  }, 1000);
+
+}
+
+function DaHoanThien() {
+  if (cart.length > 0) {
+    alert("Bạn đã thanh toán thành công!")
+  } else {
+    alert("Bạn chưa có sản phẩm nào trong giỏ hàng!")
+  }
 }
